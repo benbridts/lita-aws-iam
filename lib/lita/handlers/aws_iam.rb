@@ -17,13 +17,13 @@ module Lita
       end
 
       def list_users
-        list_users_response = iam.list_users
+        list_users_response = iam_client.list_users
         list_users_response.users.each do |user|
           puts user.user_name
         end
       end
 
-      # Creates (if needed) and returns the ssm_client.
+      # Creates (if needed) and returns the ssm_client..
       def iam_client
         @iam_client ||= initialize_iam_client
       end
