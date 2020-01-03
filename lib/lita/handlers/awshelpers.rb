@@ -86,6 +86,8 @@ module Lita
       end
 
       def initialize_aws_region
+        # the aws sdk looks for env variables first, so we'll keep that
+        return ENV['AWS_REGION'] if ENV['AWS_REGION']
         url = 'http://169.254.169.254/latest/dynamic/instance-identity/document'
         JSON.parse(get_resource(url))['region']
       end
