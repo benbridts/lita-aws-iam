@@ -11,6 +11,14 @@ module Lita
       route(/iam/, :handle_iam, command: true, help: help)
 
       def handle_iam(response)
+        # todo check the room // configure allowed channels // use https://docs.lita.io/getting-started/usage/#authorization-groups
+        puts response.message.source.room
+        puts response.message.source.room_object.id
+
+        puts response.message.body
+        puts response.matches
+        puts response.match_data
+
         configure_aws_region
         list_users
         response.reply('iam permissions granted')
